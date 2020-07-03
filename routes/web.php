@@ -13,11 +13,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/profile', 'UserController@edit')->name('user.profile.edit');
 Route::post('/{user}/profile', 'UserController@update')->name('user.profile.update')->middleware('can:update,user');
+Route::get('/', 'HomeController@index');
